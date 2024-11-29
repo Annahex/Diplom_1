@@ -1,4 +1,5 @@
 from src.bun import Bun
+from pytest import raises
 
 
 class TestBun:
@@ -11,16 +12,11 @@ class TestBun:
         assert bun.price == price
 
     def test_init_bun_with_empty_data(self):
-        has_error = False
-        try:
+        with raises(TypeError):
             Bun()
-        except TypeError:
-            has_error = True
-        assert has_error
 
-    def test_getters(self):
-        name = "test"
-        price = 42.0
-        bun = Bun(name, price)
-        assert bun.get_name() == name
-        assert bun.get_price() == price
+    def test_get_name(self, bun):
+        assert bun.get_name() == bun.name
+
+    def test_get_price(self, bun):
+        assert bun.get_price() == bun.price

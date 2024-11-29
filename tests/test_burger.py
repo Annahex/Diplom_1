@@ -28,10 +28,8 @@ class TestBurger:
     def test_move_ingredient(self, burger):
         ingredient_1 = Ingredient("test1", "test1", 42.0)
         ingredient_2 = Ingredient("test2", "test2", 43.0)
-        ingredient_3 = Ingredient("test3", "test3", 44.0)
         burger.add_ingredient(ingredient_1)
         burger.add_ingredient(ingredient_2)
-        burger.add_ingredient(ingredient_3)
         burger.move_ingredient(0, 1)
         assert burger.ingredients[0].type == ingredient_2.type
         assert burger.ingredients[0].name == ingredient_2.name
